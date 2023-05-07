@@ -25,7 +25,8 @@ module.exports = function (rolesArray) {
             next()
         } catch(e) {
             console.log(e);
-            return res.status(400).json({ message: 'Пользователь не авторизован' });
+            console.log('Пользователь не авторизован')
+            return res.status(400).json({ message: 'Пользователь не авторизован', success: false, isAuth: false });
         }
     }
 }

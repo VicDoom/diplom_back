@@ -1,13 +1,23 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
-const authRouter = require('./authRouter')
+const authRouter = require('./routers/authRouter')
+const studyCenterRouter = require('./routers/studyCenterRouter')
+const User = require('./models/User')
 const PORT = process.env.PORT || 5001
 
 const app = express()
 
+app.use(cors(
+    {
+        origin: '*',
+    }
+))
+
 app.use(express.json())
 app.use('/auth', authRouter)
+app.use('/study-center', studyCenterRouter)
 
 const start = async () => {
     try {
